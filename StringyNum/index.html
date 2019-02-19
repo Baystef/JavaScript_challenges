@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        h1 {
+            text-align: center;
+            margin-left: 0px;
+            padding: 0;
+        }
+
+        .result, .content {
+            text-align: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        input[type=text] {
+            width: 400px;
+            height: 35px;
+            padding: 0 10px;
+            margin: 0 0 20px 0;
+            font-size: 1.2em;
+        }
+
+        input[type=text]::placeholder {
+            color: #cccfff;
+        }
+
+        button {
+            /* display: block; */
+            border: 2px solid #000000;
+            width: 100px;
+            height: 30px;
+            background: #000000;
+            color: #ffffff;
+            margin: 0 0 40px 0; 
+        }
+
+        button:hover {
+            border-radius: 1px;
+            background: #ffffff;
+            color: black;
+            transition: all 0.2s ease-in;
+            box-shadow: 0.5px 1px 1px #424242;
+        }
+
+        
+    </style>
+
+
+    <h1>Convert Array into object of Types</h1>
+
+    <div class="content">
+        <p>Enter the array to be converted in the input field in the format:
+            <code>name 5 beans sugar violin 8 9</code></p>
+        <input type="text" name="arrayInput" id="arrayInput" placeholder="name 5 beans sugar">
+        <button type="submit">Convert</button>
+    </div>
+
+    <pre class="result"></pre>
+
+
+
+    <script src="index.js"></script>
+</body>
+
+</html>
