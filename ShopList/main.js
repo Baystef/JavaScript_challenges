@@ -6,35 +6,39 @@ function createNode(element) {
     return document.createElement(element);
 }
 
-function remove(parent, el) {
-    return parent.removeChild(el);
-}
-
 function append(parent, el) {
     return parent.appendChild(el);
 }
 
-add.addEventListener('click', function(e) {
-    e.preventDefault();
+function remove(parent, el) {
+    return parent.removeChild(el);
+}
 
-    const li = createNode('li');
+add.addEventListener('click', () => {  
+
+    let val = input.value
+
+    if (!val || val === "") return console.log('Field cannot be empty');
+
+    const item = createNode('li');
     const span = createNode('span');
     const del = createNode('button');
-    li.setAttribute('class', 'item');
-    span.textContent = input.value;
-    del.setAttribute('class', 'delete');
+
+    item.setAttribute('class', 'item');
+
+    span.textContent = val;
+
     del.textContent = 'Delete';
 
-    append(li, span);
-    append(li, del);
-    append(items, li);
+    append(item, span);
+    append(item, del);
+    append(items, item);
 
     input.value = "";
     input.focus();
-})
 
-document.querySelector('.delete').addEventListener('click', e => {
-    e.preventDefault();
+    del.onclick = (e) => {
 
-    remove(items, li);
+        remove(items, item);
+    }
 })
