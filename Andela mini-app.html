@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+
+    <title>Mini App</title>
+
+    <style>
+      
+      body {
+        background: lavender;
+        margin: 0;
+        overflow: hidden;
+      }
+      
+      h2 {
+        text-align: center;
+        margin-bottom: 5rem;
+        text-transform: capitalize;
+      }
+      
+      div.user-photo {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin: 1em auto;
+        background: #fff;
+        overflow: hidden;
+      }
+      
+      div.user-photo img {
+        display: block;
+        width: inherit;
+        height: inherit;
+        border-radius: inherit;
+      }
+      
+      div.details {
+        font-size: 2.3em;
+        margin: 2.5em 0.2em 0.2em 0.2em;
+        min-height: 6em;
+        background: #6200ee;
+        color: #fff;
+        padding: 1.1em;
+      }
+      
+      footer {
+        width: calc(100% - 2em);
+        z-index: 500;
+        position: absolute;
+        bottom: 0;
+        overflow: hidden;
+        display: flex;
+        justify-content: space-between;
+        margin: 0 1em;
+      }
+      
+      footer button.mdc-icon-button {
+        margin: 0.5em;
+        color: white;
+      }
+      
+    </style>
+  </head>
+  <body>
+    
+    <h2>Daramola Adebayo</h2>
+    
+    <div class="user-photo mdc-elevation--z3">
+      	<img src="https://via.placeholder.com/150.jpeg" alt="User Photo" />
+    </div>
+    <div class="details mdc-elevation--z3"></div>
+    <div class="messages"></div>
+    
+    <footer>
+      <button id="btn-birthdate" class="mdc-icon-button material-icons">event</button>
+      <button id="btn-address" class="mdc-icon-button material-icons">home</button>
+      <button id="btn-phone" class="mdc-icon-button material-icons">call</button>
+    </footer>
+    
+    <script>
+      
+      const notify = (msg) => {
+        const toastr = document.querySelector('.messages');
+        if(!toastr) return;
+        
+        toastr.textContent = msg;
+        if(!toastr.classList.contains('on')) {
+          toastr.classList.add('on');
+        }
+      };
+      
+      const clearNotice = () => {
+        const toastr = document.querySelector('.messages');
+        if(!toastr) return;
+        
+        toastr.textContent = '';
+        toastr.classList.remove('on');
+      };
+      
+      const displayUserPhotoAndName = (data) => {
+        if(!data) return;
+        
+        // add your code here
+		
+        const { results } = data;
+        const [ profile ] = results;
+        
+        const heading = document.querySelector('h2');
+        heading.textContent = `${profile.name.title} ${profile.name.last} ${profile.name.first}`;
+        
+        const image = document.querySelector('img');
+        image.src = profile.picture.large;
+        
+        clearNotice();
+        displayExtraUserInfo(profile);
+      };
+      
+      const details = document.querySelector('.details');
+      
+      const displayBirthdate = ({ dob }) => {
+        	
+        	details.textContent = `${dob.age} years old`;
+      }
+      
+      const displayPhone = ({ phone, cell }) => {
+        	details.textContent = `${phone} / ${cell}`;
+      }
+        
+      const displayAddress = ({ location }) => {
+        	details.textContent = `${location.street}, ${location.city}, ${location.state}`;
+      }
+      
+      const displayExtraUserInfo = (data) => {
+        	const birthdate = document.getElementById('btn-birthdate')
+            birthdate.addEventListener('click', () => displayBirthdate(data));
+      
+            const phone = document.getElementById('btn-phone')
+            phone.addEventListener('click', () => displayPhone(data));
+
+            const address = document.getElementById('btn-address')
+            address.addEventListener('click', () => displayAddress(data));
+      }
+      
+      
+      
+      const getAUserProfile = () => {
+        const api = 'https://randomuser.me/api/';
+        
+        // make API call here
+         fetch(api)
+        	.then(response => response.json())
+        	.then(json => displayUserPhotoAndName(json))
+        
+        notify(`requesting profile data ...`);
+      };
+      
+      const startApp = () => {
+        // invoke the getAUserProfile here
+        getAUserProfile();
+      };
+
+      startApp();
+    </script>
+  </body>
+</html>
