@@ -9,7 +9,7 @@ function getLengthOfMissingArray(arrayOfArrays) {
     let sorted = arrayOfArrays.sort((a, b) => (a.length - b.length));
     // console.log(sorted);
     let missing = sorted.forEach((a, b) => {
-        if ((b.length - a.length) === 2) console.log(a.length);
+        if ((b.length - a.length) > 1) console.log(a.length);
     })
     // let missing = sorted.forEach((n, i) => {
     //     if (n[i + 1].length - n[i].length === 2)

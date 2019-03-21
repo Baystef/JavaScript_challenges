@@ -140,3 +140,13 @@
 // })
 
 // console.log(res);
+
+//Check if length of number is 1 digit or two digits, return 1 number if length = 1 or 2 but return 2 digits if length > 2;
+// let re =/^[1-1][1-9]$/;
+// function test(n) {
+//     if (String(n).length === 1 || String(n).length === 2) {
+//         return String(n).substr(-1);
+//     } else if (re.test(parseInt(String(n).substr(-2), 10)) && String(n).length > 2) {
+//          return String(n).substr(-2);
+//     }
+// }
