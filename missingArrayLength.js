@@ -1,25 +1,32 @@
 function getLengthOfMissingArray(arrayOfArrays) {
-    // if (arrayOfArrays = [] ||  null) return 0;
-    // let length = arrayOfArrays.length;
+    if (arrayOfArrays.length === 0 || arrayOfArrays === [null]) return 0;
+    
+    let length = arrayOfArrays.length;
 
+    console.log(length);
     // for (let i = 0; i <= length; i++) {
-    //     if (arrayOfArrays[i] = [] || null) return 0;
+    //     if (arrayOfArrays[i].length === 0 || null) return 0;
     // }
 
-    let sorted = arrayOfArrays.sort((a, b) => (a.length - b.length));
-    // console.log(sorted);
-    let missing = sorted.forEach((a, b) => {
-        if ((b.length - a.length) > 1) console.log(a.length);
-    })
-    // let missing = sorted.forEach((n, i) => {
-    //     if (n[i + 1].length - n[i].length === 2)
-    //      console.log(n[i].length);
-    // });
+    let missing = arrayOfArrays.sort((a, b) => (a.length - b.length)).reduce((a, b) => (b.length - a.length) > 1 ? a : b);
+    console.log(missing);
 
-   
+    // let missing = sorted.reduce((a, b) => b.length - a.length > 1 ? a : b);
 
-    return missing;
+    return missing.length + 1;
+  
 }
 
-const arrays = [[1,2], [3,4,5,1], [2,5,3,7,8],[1]];
-console.log(getLengthOfMissingArray(arrays));
+const arrays = [
+    [1, 2],
+    [3, 4, 5, 1],
+    [2, 5, 3, 7, 8],
+    [1]
+];
+const arrays2 = [
+    [],
+    [1, 2, 3]
+];
+const arrays3 = [[1,2,3], [1,2,3,4,5], [1,2,3,4], [1,2,3,4,5,6,7]];
+
+console.log(getLengthOfMissingArray(arrays3));
