@@ -1,17 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Pop Balloons</title>
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            text-align: center;
+            background: #141212;
+        }
+
+        .title {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        .instruction {
+            margin-bottom: 0;
+            font-family: sans-serif;
+        }
+
+        .party {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 40rem;
+            height: 40rem;
+            border-radius: 5px;
+            background-image: linear-gradient(135deg, orange, orange 50%, cyan);
+        }
+
+        #balloon {
+            border: none;
+            width: 300px;
+            height: 30px;
+            margin-top: 1rem;
+            border-radius: 3px;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        .pop {
+            display: block;
+            margin: 0.8rem 0;
+            padding: 0.5rem 1rem;
+            width: 4rem;
+            height: 2rem;
+            background: black;
+            color: rgb(19, 216, 19);
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 3px greenyellow;
+        }
+
+        .pop:active {
+            box-shadow: 0 1px green;
+            transform: translateY(3px);
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Pop Something</h1>
+
     <main class="party">
-        <input type="number" name="balloon" id="balloon">
+        <h1 class="title">Pop Something</h1>
+        <p class="instruction">A balloon is a number in the range <b>0 - 9</b></p>
+        <p class="instruction">For example: <b>0,0,4,0,0</b></p>
+        <input type="text" name="balloon" id="balloon" pattern="[0-9,]+" placeholder="Put ballons here">
         <button class="pop">POP</button>
         <div class="popped"></div>
     </main>
+
+    <script src="popBallon.js"></script>
 </body>
+
 </html>

@@ -150,3 +150,20 @@
 //          return String(n).substr(-2);
 //     }
 // }
+
+//Regular Expresion for commas and numbers
+// const re = /^\d+(,\d+)*$/;
+
+// function empty() {
+//     if (this.value.length > 0) {
+//         popIt.disabled = false;
+//     } else {
+//         popIt.disabled = true;
+//     }
+// }
+
+
+//map all elements of the array to zero
+// const array = [5, 10, 15, 20, 25, 30];
+
+// console.log(array.map(_ => 0));
