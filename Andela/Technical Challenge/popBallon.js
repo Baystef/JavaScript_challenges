@@ -2,6 +2,8 @@ const input = document.querySelector('#balloon');
 const popIt = document.querySelector('.pop');
 const popped = document.querySelector('.popped');
 
+//check if input field ends with a comma
+const re = /[0-9,][,]$/
 
 
 //Input validator
@@ -10,7 +12,7 @@ popIt.onclick = displayResult;
 
 
 function checkKey() {
-    let clean = this.value.replace(/[^0-9,]/g, "");
+    let clean = this.value.replace(/^[,]|[^0-9,]/g, "");
 
     if (clean !== this.value) {
         popped.textContent = `This is not a balloon, see above for what a balloon is`;
@@ -23,11 +25,15 @@ function checkKey() {
 
 
 function displayResult()  {
-    let party = input.value === '' ? popped.innerHTML = `I pop balloons, not air. Please enter a balloon` : (input.value).split(',').map(Number);
+    let balloon = input.value === '' 
+    ? popped.innerHTML = `I pop balloons, not air. Please enter a balloon` 
+    : re.test(input.value) 
+    ? popped.innerHTML = `This is not a valid balloon, see above`
+    : (input.value).split(',').map(Number);
    
-    console.log(party);
-    popped.innerHTML = pop(party);
-    console.log(pop(party));
+    console.log(balloon);
+    popped.innerHTML = pop(balloon);
+    console.log(pop(balloon));
 
     input.value = '';
     input.focus();
