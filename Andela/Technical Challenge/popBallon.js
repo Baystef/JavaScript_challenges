@@ -23,7 +23,7 @@ function checkKey() {
 
 
 function displayResult()  {
-    let party = input.value === '' || ',' ? popped.innerHTML = `I pop balloons, not air. Please enter a balloon` : (input.value).split(',').map(Number);
+    let party = input.value === '' ? popped.innerHTML = `I pop balloons, not air. Please enter a balloon` : (input.value).split(',').map(Number);
    
     console.log(party);
     popped.innerHTML = pop(party);
