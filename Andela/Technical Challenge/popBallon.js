@@ -15,10 +15,10 @@ function checkKey() {
     let clean = this.value.replace(/^[,]|[^0-9,]/g, "");
 
     if (clean !== this.value) {
-        popped.textContent = `This is not a balloon, see above for what a balloon is`;
+        popped.textContent = 'This is not a balloon, see above for what a balloon is';
         this.value = clean;
     } else {
-        popped.textContent = ``;
+        popped.textContent = '';
     };
 }
 
@@ -26,9 +26,9 @@ function checkKey() {
 
 function displayResult()  {
     let balloon = input.value === '' 
-    ? popped.innerHTML = `I pop balloons, not air. Please enter a balloon` 
+    ? popped.innerHTML = 'I pop balloons, not air. Please enter a balloon' 
     : re.test(input.value) 
-    ? popped.innerHTML = `This is not a valid balloon, see above`
+    ? popped.innerHTML = 'This is not a valid balloon, see above'
     : (input.value).split(',').map(Number);
    
     console.log(balloon);
@@ -82,7 +82,7 @@ function pop(balloons) {
 
 
 // function pop(balloon) {
-//     let res = [];
+//     let res = [...balloon];
 
 //     for (let i = 0; i < balloon.length; i++) {
 
