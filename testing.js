@@ -207,44 +207,44 @@
 
 
 
-function Loans(user, loanAmount, tenor, createdAt = new Date().toLocaleString(), status = 'pending', repaid = 'false') {
-  interest = () => (loanAmount * 0.05);
-  monthlyInstall = () => ((loanAmount + interest()) / tenor);
-  balance = () => (loanAmount + interest());
+// function Loans(user, loanAmount, tenor, createdAt = new Date().toLocaleString(), status = 'pending', repaid = 'false') {
+//   interest = () => (loanAmount * 0.05);
+//   monthlyInstall = () => ((loanAmount + interest()) / tenor);
+//   balance = () => (loanAmount + interest());
 
-  return {
-    user,
-    loanAmount,
-    tenor,
-    status,
-    repaid,
-    interest: interest(),
-    monthlyInstall: monthlyInstall(),
-    balance: balance(),
-    createdAt
-  }
-}
-console.log(Loans('daramola@quic.com', 5000, 12));
+//   return {
+//     user,
+//     loanAmount,
+//     tenor,
+//     status,
+//     repaid,
+//     interest: interest(),
+//     monthlyInstall: monthlyInstall(),
+//     balance: balance(),
+//     createdAt
+//   }
+// }
+// console.log(Loans('daramola@quic.com', 5000, 12));
 
 
-//Gets date month and year from ISO (1575436577)
-function timeSince(iso){
-  const now = new Date();
-  const timestamp = new Date(iso);
-  const secondsPast = (now.getTime() - timestamp.getTime()) / 1000;
-  if (secondsPast < 60) {
-    return `${Number(secondsPast)}s`;
-  }
-  if (secondsPast < 3600) {
-    return `${Number(secondsPast/60)}m`;
-  }
-  if (secondsPast <= 86400) {
-    return `${Number(secondsPast/3600)}h`;
-  }
-  if (secondsPast > 86400) {
-    day = timestamp.getDate();
-    month = timestamp.toDateString().match(/[a-zA-Z]*/)[0].replace(' ', '');
-    year = timestamp.getFullYear() == now.getFullYear() ? '' : ' '+timestamp.getFullYear();
-    return `${day} ${month}${year}`;
-  }
-};
+// //Gets date month and year from ISO (1575436577)
+// function timeSince(iso){
+//   const now = new Date();
+//   const timestamp = new Date(iso);
+//   const secondsPast = (now.getTime() - timestamp.getTime()) / 1000;
+//   if (secondsPast < 60) {
+//     return `${Number(secondsPast)}s`;
+//   }
+//   if (secondsPast < 3600) {
+//     return `${Number(secondsPast/60)}m`;
+//   }
+//   if (secondsPast <= 86400) {
+//     return `${Number(secondsPast/3600)}h`;
+//   }
+//   if (secondsPast > 86400) {
+//     day = timestamp.getDate();
+//     month = timestamp.toDateString().match(/[a-zA-Z]*/)[0].replace(' ', '');
+//     year = timestamp.getFullYear() == now.getFullYear() ? '' : ' '+timestamp.getFullYear();
+//     return `${day} ${month}${year}`;
+//   }
+// };
